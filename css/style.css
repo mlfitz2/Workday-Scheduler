@@ -1,0 +1,24 @@
+:root {
+    --turquoise: #315563;
+    --offwhite: #e9e9e9;
+    --orange: #aa4720;
+}
+
+body {
+    background-color: var(--offwhite);
+}
+
+.jumbotron {
+    background-color: var(--turquoise);
+}
+
+#header-text-bg {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 25px;
+    width: 65%;
+}
+
+#current-time {
+    color: var(--orange);
+    font-weight: 900;
+}
