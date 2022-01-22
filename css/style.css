@@ -28,3 +28,7 @@ body {
     border: 5px solid black;
     margin: 2px;
 }
+
+.past {
+    background-color: yellow;
+}
