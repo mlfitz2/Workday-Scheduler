@@ -22,3 +22,9 @@ body {
     color: var(--orange);
     font-weight: 900;
 }
+
+.row {
+    width: 90%;
+    border: 5px solid black;
+    margin: 2px;
+}
