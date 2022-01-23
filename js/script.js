@@ -1,52 +1,69 @@
-var currentTimeEl = document.querySelector('#current-time');
-var scheduleArea = document.querySelector('#schedule-area');
-
+let currentTimeEl = $('#current-time');
+let scheduleArea = $('#schedule-area')
 
 //Displays the current time
 function displayTime() {
-  var currentTime = moment().format("dddd, MMMM Do, YYYY, h:mm a");
-  currentTimeEl.textContent = currentTime;
+  let currentTime = moment().format("dddd, MMMM Do, YYYY, h:mm a");
+  currentTimeEl.text(currentTime);
 }
 displayTime();
 setInterval(displayTime, 1000);
 
 
-
 //Create the empty planner outline
-var hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+let hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 hours.forEach(function(hours) {
 
   //Create rows
-  var calRow = document.createElement('div');
+  let calRow = document.createElement('div');
   calRow.setAttribute('class', 'row');
   scheduleArea.append(calRow);
   
   //Create column for the time
-  var hourColumn = document.createElement('div');
-  hourColumn.setAttribute('class', 'col-2 hour-column');
+  let hourColumn = document.createElement('div');
+  hourColumn.setAttribute('class', 'col hour-column');
   calRow.append(hourColumn);
-  // hourColumn.textContent = moment(hours, 'HH').format('hh A');
   hourColumn.textContent = moment(hours, 'hh').format('hh A');
 
       //Change the colors to show which hours are past, present or future
-      //IT'S SHOWING THE AM TIMES IN THE SAME CATEGORY AS THE PM'S, SO AT 11 PM 10 AM WILL TURN YELLOW ALONG WITH 10PM. WHY??
-      //IT ALSO CHANGES THE POSITION WHEN TURNING YELLOW, BUT NO REASON FOR IT IN CSS. WHY?
-      thisHour = moment().format('hh A');
-      if (hourColumn.textContent < thisHour) {
+      let currentHour = moment().hours();
+      let hourCol = parseInt(hourColumn.textContent);
+      if (hours < currentHour) {
         hourColumn.setAttribute('class', 'past');
-        console.log(thisHour, hourColumn.textContent)
+      } else if (hours > currentHour) {
+        hourColumn.setAttribute('class', 'future')
+      } else if (hours === currentHour) {
+        hourColumn.setAttribute('class', 'present')
       }
-      console.log(thisHour, hourColumn.textContent)
+
       
   //Create column where the event will go
-  var eventColumn = document.createElement('div');
-  eventColumn.setAttribute('class', 'col-8 events-column');
+  let eventColumn = document.createElement('div');
+  eventColumn.setAttribute('class', 'col events-column');
   calRow.append(eventColumn);
 
+      //Create input field to type in the name of the event to add
+      let eventInput = document.createElement('input');
+      eventInput.setAttribute('class', 'form-control')
+      eventColumn.append(eventInput);
+
   //Create column for Save button
-  var lockColumn = document.createElement('div');
-  eventColumn.setAttribute('class', 'col-2 save-column');
+  let lockColumn = document.createElement('div');
+  lockColumn.setAttribute('class', 'col-2 save-column');
   calRow.append(lockColumn); 
+
+      let unsavedIcon = document.createElement('i');
+      unsavedIcon.setAttribute('class', 'fas fa-lock-open');
+      lockColumn.append(unsavedIcon); 
+      
+  function saveActivity(eventInput) {
+    let myActivity = $(eventInput).val();
+    console.log(myActivity);
+  }
+
+  lockColumn.addEventListener('click', saveActivity);
 })
+
+
 
