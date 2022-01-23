@@ -45,25 +45,29 @@ hours.forEach(function(hours) {
 
       //Create input field to type in the name of the event to add
       let eventInput = document.createElement('input');
-      eventInput.setAttribute('class', 'form-control')
+      eventInput.setAttribute('type', 'text');
+      eventInput.setAttribute('class', 'form-control event-name')
       eventColumn.append(eventInput);
-
-  //Create column for Save button
-  let lockColumn = document.createElement('div');
-  lockColumn.setAttribute('class', 'col-2 save-column');
-  calRow.append(lockColumn); 
-
-      let unsavedIcon = document.createElement('i');
-      unsavedIcon.setAttribute('class', 'fas fa-lock-open');
-      lockColumn.append(unsavedIcon); 
       
-  function saveActivity(eventInput) {
-    let myActivity = $(eventInput).val();
-    console.log(myActivity);
-  }
-
-  lockColumn.addEventListener('click', saveActivity);
-})
-
+         
+      //Create column for Save button
+      let lockColumn = document.createElement('div');
+      lockColumn.setAttribute('class', 'col-2 save-column');
+      calRow.append(lockColumn); 
+      
+      let lockIcon = document.createElement('i');
+      lockIcon.setAttribute('class', 'fas fa-lock-open');
+      lockColumn.append(lockIcon); 
+      
+      
+      function saveActivity() {
+        lockIcon.removeAttribute('class', 'fas fa-lock-open');
+        lockIcon.setAttribute('class', 'fas fa-lock');
+        lockColumn.setAttribute('class', 'saved')
+      }
+      
+      lockColumn.addEventListener('click', saveActivity);
+    })
+    
 
 
