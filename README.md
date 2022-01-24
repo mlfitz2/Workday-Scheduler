@@ -13,7 +13,7 @@ The code features Bootstrap to create and format elements, Moments API to displa
 In the screnshots below, one shot includes extra hours that are not in the deployed site. I added 6:00 pm - 11:00 pm just to be able to show the appearance of present and future times, since I was taking the screenshots after 6pm when the business hours were all in the past. 
 
 
-![Screenshot-1](./screenshots/blankschedule.jpg "Upon loading")
-![Screenshot-2](./screenshots/colorcoding.jpg "Color-coded past, present and future times")
-![Screenshot-3](./screenshots/savedactivity.jpg "Button appearance when activity is saved")
+![Screenshot-1](./screenshots/blankschedule.JPG "Upon loading")
+![Screenshot-2](./screenshots/colorcoding.JPG "Color-coded past, present and future times")
+![Screenshot-3](./screenshots/savedactivity.JPG "Button appearance when activity is saved")
 
